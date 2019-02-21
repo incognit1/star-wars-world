@@ -1,0 +1,17 @@
+.random-planet {
+    display: flex;
+    align-items: center;
+    background: #efefef;
+    padding: 25px;
+
+    margin: 20px 0;
+}
+
+.image-preview {
+    margin-right: 20px;
+    width: 200px;
+}
+
+.image-preview img {
+    max-width: 200px;
+}

@@ -1,0 +1,32 @@
+.header-block {
+    display: flex;
+    justify-content: center;
+    background: #903f3f;
+    padding: 15px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav li {
+    padding: 10px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+
+.nav li:hover {
+    background: #333131;
+}
+
+.logo {
+    margin-right: 30px;
+}
+
+.logo img {
+    width: 150px;
+}

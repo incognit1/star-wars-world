@@ -1,0 +1,8 @@
+.wrapper {
+    padding: 30px;
+}
+
+.items-block {
+    display: flex;
+    align-items: center;
+}
