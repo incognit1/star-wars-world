@@ -13,21 +13,24 @@ export default class StarWarsService {
         return await body;
     }
 
-    async getAllPeople() {
+    getAllPeople = async () => {
         const res = await this.getResource('people/');
 
-        return res.results;
+        return res.results.map(this._transformPerson).slice(0,6);
+    };
+
+    async getPerson(id) {
+        const res = await this.getResource(`people/${id}/`);
+
+        console.log('id', id);
+        return this._transformPerson(res);
     }
 
-    getPerson(id) {
-        return this.getResource(`people/${id}/`)
-    }
-
-    async getAllPlanets() {
+    getAllPlanets = async () => {
         const res = await this.getResource('planets/');
 
         return res.results.map(this._transformPlanet);
-    }
+    };
 
     async getPlanet(id) {
         const planet = await this.getResource(`planets/${id}/`);
@@ -46,7 +49,7 @@ export default class StarWarsService {
     }
 
 
-    _transformPlanet(planet) {
+    _transformPlanet = (planet) => {
         return {
             id            : this._extractId(planet),
             name          : planet.name,
@@ -54,21 +57,22 @@ export default class StarWarsService {
             rotationPeriod: planet.rotation_period,
             diameter      : planet.diameter,
         }
-    }
+    };
+
+    _transformPerson = (person) => {
+        return {
+            id       : this._extractId(person),
+            name     : person.name,
+            gender   : person.gender,
+            birthYear: person.birth_year,
+            eyeColor : person.eye_color,
+        }
+    };
 
     _extractId(item) {
         const regexId = /\/([0-9]*)\/$/;
-
-        console.log(item);
 
         return item.url.match(regexId)[1];
     }
 
 }
-
-const db = new StarWarsService();
-
-db.getAllPeople().then(
-    res => console.log(res),
-    error => console.log(error),
-);

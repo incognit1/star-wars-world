@@ -1,0 +1,15 @@
+.error-container {
+    width: 100%;
+    text-align: center;
+}
+
+.error-msg {
+    color: #903f3f;
+    font-size: 16px;
+}
+
+.error-title {
+    font-weight: bold;
+    font-size: 30px;
+    color: #333131;
+}

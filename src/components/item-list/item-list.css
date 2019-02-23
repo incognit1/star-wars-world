@@ -24,3 +24,9 @@
     cursor: pointer;
     color: #fff;
 }
+
+.add-info {
+    color: brown;
+    font-size: 12px;
+    margin-left: 8px;
+}

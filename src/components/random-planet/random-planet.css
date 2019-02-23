@@ -5,6 +5,8 @@
     padding: 25px;
 
     margin: 20px 0;
+
+    height: 250px;
 }
 
 .image-preview {
@@ -14,4 +16,8 @@
 
 .image-preview img {
     max-width: 200px;
+}
+
+.spinner {
+    margin: 0 auto;
 }

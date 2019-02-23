@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import Header from './../header';
 import RandomPlanet from './../random-planet';
-import ItemsList from './../item-list';
-import PersonDetails from './../person-details';
 import './app.css';
+import PeoplePage from "../people-page";
+import PersonDetails from "../person-details";
+import StarWarsService from "../../services/star-wars.service";
+import ItemList from "../item-list";
 
 export default class App extends Component {
+
+    db = new StarWarsService();
 
     render() {
         return (
@@ -13,9 +17,14 @@ export default class App extends Component {
                 <Header/>
                 <RandomPlanet/>
 
+                <PeoplePage/>
+
+                <br/>
                 <div className="items-block">
-                    <ItemsList/>
-                    <PersonDetails/>
+                    <ItemList getData={this.db.getAllPlanets}
+                              onPersonSelected={this.onPersonSelected}>
+                        {(item) => item.name}
+                    </ItemList>
                 </div>
             </div>
         );

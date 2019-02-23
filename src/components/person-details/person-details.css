@@ -13,3 +13,9 @@
 .person-details .img img {
     max-width: 200px;
 }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
