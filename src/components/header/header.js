@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div className="header-block">
             <div className="logo">
-                <img src="https://bobandsuewilliams.com/images/star-wars-logo-1.png" alt=""/>
+                <p className="logo-title">star<br/>wars</p>
             </div>
             
             <ul className="nav">

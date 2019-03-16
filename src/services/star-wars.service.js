@@ -1,4 +1,6 @@
 export default class StarWarsService {
+    _imageBase = 'https://starwars-visualguide.com/assets/img';
+
     async getResource(url) {
         const _apiBase = 'https://swapi.co/api/';
 
@@ -16,15 +18,15 @@ export default class StarWarsService {
     getAllPeople = async () => {
         const res = await this.getResource('people/');
 
-        return res.results.map(this._transformPerson).slice(0,6);
+        return res.results.map(this._transformPerson).slice(0, 6);
     };
 
-    async getPerson(id) {
+    getPerson = async (id) => {
         const res = await this.getResource(`people/${id}/`);
 
         console.log('id', id);
         return this._transformPerson(res);
-    }
+    };
 
     getAllPlanets = async () => {
         const res = await this.getResource('planets/');
@@ -32,22 +34,35 @@ export default class StarWarsService {
         return res.results.map(this._transformPlanet);
     };
 
-    async getPlanet(id) {
+    getPlanet = async (id) => {
         const planet = await this.getResource(`planets/${id}/`);
 
         return this._transformPlanet(planet);
-    }
+    };
 
-    async getAllStarships() {
+    getAllStarships = async () => {
         const res = await this.getResource('starships/');
 
         return res.results;
-    }
+    };
 
-    getStarship(id) {
-        return this.getResource(`starships/${id}/`)
-    }
+    getStarship = async (id) => {
+        const starship = await this.getResource(`starships/${id}/`);
 
+        return this._transformStarship(starship);
+    };
+
+    getPersonImage = (person) => {
+        return `${this._imageBase}/characters/${person.id}.jpg`
+    };
+
+    getStarshipImage = (starship) => {
+        return `${this._imageBase}/starships/${starship.id}.jpg`
+    };
+
+    getPlanetsImage = (planet) => {
+        return `${this._imageBase}/planets/${planet.id}.jpg`
+    };
 
     _transformPlanet = (planet) => {
         return {
@@ -66,6 +81,15 @@ export default class StarWarsService {
             gender   : person.gender,
             birthYear: person.birth_year,
             eyeColor : person.eye_color,
+        }
+    };
+
+    _transformStarship = (starship) => {
+        return {
+            id        : this._extractId(starship),
+            name      : starship.name,
+            passengers: starship.passengers,
+            length    : starship.length,
         }
     };
 

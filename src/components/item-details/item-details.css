@@ -1,0 +1,17 @@
+.card-body {
+    display: flex;
+}
+
+.item-details {
+}
+
+.item-details .img {
+    margin-right: 20px;
+    max-width: 200px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

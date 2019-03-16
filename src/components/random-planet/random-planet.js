@@ -34,7 +34,7 @@ export default class RandomPlanet extends Component {
     };
 
     updatePlanet = () => {
-        const id = Math.floor(Math.random() * 25);
+        const id = Math.floor(Math.random() * 25) + 3;
 
         this.setState({loading: true, error: false});
 

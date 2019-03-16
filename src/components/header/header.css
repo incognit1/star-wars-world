@@ -1,7 +1,6 @@
 .header-block {
     display: flex;
     justify-content: center;
-    background: #903f3f;
     padding: 15px;
     color: #fff;
     font-size: 18px;
@@ -29,4 +28,11 @@
 
 .logo img {
     width: 150px;
+}
+
+.logo-title {
+    font-family: jedi-outline, Tahoma, sans-serif;
+    font-size: 48px;
+    color: #f5cb00;
+    line-height: 42px;
 }

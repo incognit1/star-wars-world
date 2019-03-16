@@ -18,17 +18,17 @@ export default class ItemList extends Component {
     }
 
     renderItems(items) {
-        const {onPersonSelected} = this.props;
+        const {onItemSelected} = this.props;
 
         return items.map(
             (item) => {
                 const {id} = item;
-                const renderItem = this.props.children;
+                const uniqueContent = this.props.children(item);
 
                 return (
                     <li className="list-group-item"
-                        onClick={() => onPersonSelected(id)}
-                        key={id}>{renderItem(item)}
+                        onClick={() => onItemSelected(id)}
+                        key={id}>{uniqueContent}
                     </li>)
             }
         );
@@ -44,7 +44,7 @@ export default class ItemList extends Component {
         const itemListView = this.renderItems(itemList);
 
         return (
-            <div className="itemList">
+            <div className="item-list">
                 <ul className="list-group">
                     {itemListView}
                 </ul>

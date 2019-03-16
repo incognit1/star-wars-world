@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './people-page.css'
-import PersonDetails from "../person-details";
 import ItemList from "../item-list";
 import StarWarsService from "../../services/star-wars.service";
+import Row from "../row";
 import ErrorCatcher from "../error-catcher";
+import ItemDetails from "../item-details";
 
 export default class PeoplePage extends Component {
     state = {
@@ -19,16 +20,25 @@ export default class PeoplePage extends Component {
     render() {
         const {selectedItemId} = this.state;
 
+        const itemList = (
+            <ItemList getData={this.db.getAllPeople}
+                      onItemSelected={this.onPersonSelected}>
+                {
+                    (item) => `${item.name} Родился: ${item.birthYear}`
+                }
+            </ItemList>
+        );
+
+        const personDetails = (
+            <ItemDetails personId={selectedItemId}/>
+        );
+
         return (
-            <ErrorCatcher>
-                <div className="items-block">
-                    <ItemList getData={this.db.getAllPeople}
-                              onPersonSelected={this.onPersonSelected}>
-                        {(item) => (<p>{item.name} <span className="add-info">{item.gender}</span> </p>)}
-                    </ItemList>
-                    <PersonDetails personId={selectedItemId}/>
-                </div>
-            </ErrorCatcher>
+            <div>
+                <ErrorCatcher>
+                    <Row left={itemList} right={personDetails}/>
+                </ErrorCatcher>>
+            </div>
         )
     }
 }
