@@ -1,6 +1,5 @@
 import React from "react";
 
-import withData from "../hoc-helpers/with-data";
 import ItemDetails from "../item-details";
 import StarWarsService from "../../services/star-wars.service";
 import {Record} from "../item-details/item-details";

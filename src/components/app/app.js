@@ -20,17 +20,9 @@ export default class App extends Component {
             <div className="wrapper">
                 <Header/>
 
-                <PersonList>
-                    {(item) => item.name}
-                </PersonList>
-
-                <StarshipList>
-                    {(item) => item.name}
-                </StarshipList>
-
-                <PlanetList>
-                    {(item) => item.name}
-                </PlanetList>
+                <PersonList/>
+                <StarshipList/>
+                <PlanetList/>
 
                 <Row
                     left={<PersonDetails itemId={1}/>}
