@@ -2,9 +2,13 @@ import React, {Component} from 'react';
 import Header from './../header';
 import './app.css';
 import StarWarsService from "../../services/star-wars.service";
-import Row from "../row";
 import {PersonList, PlanetList, StarshipList} from "../sw-components/item-list";
-import {PersonDetails, PlanetDetails, StarshipDetails} from "../sw-components/details";
+
+import {StarWarsProvider} from './../star-wars-context';
+
+import PlanetDetails from './../sw-components/planet-details';
+import StarshipDetails from './../sw-components/starship-details';
+import PersonDetails from './../sw-components/person-details';
 
 export default class App extends Component {
 
@@ -12,7 +16,7 @@ export default class App extends Component {
         selectedItemId: 1,
     };
 
-    db = new StarWarsService();
+    dataService = new StarWarsService();
 
     render() {
         return (
@@ -20,16 +24,16 @@ export default class App extends Component {
             <div className="wrapper">
                 <Header/>
 
-                <PersonList/>
-                <StarshipList/>
-                <PlanetList/>
+                <StarWarsProvider value={this.dataService}>
+                    <PersonList/>
+                    <StarshipList/>
+                    <PlanetList/>
 
-                <Row
-                    left={<PersonDetails itemId={1}/>}
-                    right={<StarshipDetails itemId={5}/>}/>
-                <br/>
+                    <PlanetDetails itemId={5}/>
+                    <PersonDetails itemId={1}/>
+                    <StarshipDetails itemId={5}/>
+                </StarWarsProvider>
 
-                <PlanetDetails itemId={5}/>
 
             </div>
         );

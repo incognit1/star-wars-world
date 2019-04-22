@@ -13,7 +13,7 @@ export {
     Record,
 }
 
-export default class ItemDetails extends Component {
+class ItemDetails extends Component {
     state = {
         item   : {},
         image  : null,
@@ -88,3 +88,5 @@ export default class ItemDetails extends Component {
         )
     }
 }
+
+export default ItemDetails

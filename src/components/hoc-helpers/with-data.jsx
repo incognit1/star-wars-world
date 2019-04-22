@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-const withData = (View, getData) => {
+const withData = (View) => {
     return class extends Component {
         state = {
             data: null,
         };
 
         componentDidMount() {
-            getData().then(
+            this.props.getData().then(
                 res => this.setState({data: res}),
                 error => console.log(error),
             )

@@ -60,7 +60,7 @@ export default class StarWarsService {
         return `${this._imageBase}/starships/${starship.id}.jpg`
     };
 
-    getPlanetsImage = (planet) => {
+    getPlanetImage = (planet) => {
         return `${this._imageBase}/planets/${planet.id}.jpg`
     };
 

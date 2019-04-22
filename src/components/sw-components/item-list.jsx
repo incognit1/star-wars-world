@@ -1,9 +1,7 @@
 import withData from "../hoc-helpers/with-data";
 import ItemList from "../item-list/item-list";
-import StarWarsService from "../../services/star-wars.service";
 import React from "react";
-
-const { getAllPeople, getAllStarships, getAllPlanets } = new StarWarsService();
+import withStarWarsService from "../hoc-helpers/with-star-wars-service";
 
 const withChildFunction = (Wrapped, fn) => {
     return (props) => {
@@ -11,24 +9,42 @@ const withChildFunction = (Wrapped, fn) => {
     }
 };
 
-
-const renderName = ({name}) => (<span>{name}</span>),
+const renderName         = ({name}) => (<span>{name}</span>),
       renderModelAndName = ({name, model}) => (<span>{name} ({model})</span>);
 
-const PersonList = withData(
-    withChildFunction(ItemList, renderName),
-    getAllPeople
-);
+const mapPersonListDataToProps  = (starWarsService) => ({
+    getData: starWarsService.getAllPeople
+});
+const mapPlanetListDataToProps  = (starWarsService) => ({
+    getData: starWarsService.getAllPlanets
+});
+const mapStarsipListDataToProps = (starWarsService) => ({
+    getData: starWarsService.getAllStarships
+});
 
-const StarshipList = withData(
-    withChildFunction(ItemList, renderModelAndName),
-    getAllStarships,
-);
+const PersonList =
+          withStarWarsService(
+              withData(
+                  withChildFunction(ItemList, renderName),
+              ),
+              mapPersonListDataToProps,
+          );
 
-const PlanetList = withData(
-    withChildFunction(ItemList, renderName),
-    getAllPlanets
-);
+const StarshipList =
+          withStarWarsService(
+              withData(
+                  withChildFunction(ItemList, renderModelAndName),
+              ),
+              mapStarsipListDataToProps,
+          );
+
+const PlanetList =
+          withStarWarsService(
+              withData(
+                  withChildFunction(ItemList, renderName)
+              ),
+              mapPlanetListDataToProps,
+          );
 
 export {
     PersonList,
