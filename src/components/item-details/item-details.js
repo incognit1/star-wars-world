@@ -15,10 +15,10 @@ export {
 
 class ItemDetails extends Component {
     state = {
-        item   : {},
+        item   : null,
         image  : null,
         error  : false,
-        loading: true,
+        loading: false,
     };
 
     updateItem() {
@@ -75,13 +75,15 @@ class ItemDetails extends Component {
             </React.Fragment>)
         };
 
-        const itemView   = !this.state.loading ? ItemDetailsView(this.state.item, this.state.image) : null;
+        const itemView   = (!this.state.loading && this.state.item) ? ItemDetailsView(this.state.item, this.state.image) : null;
         const loaderView = this.state.loading ? <Spinner/> : null;
+        const emptyView = (!this.state.itemId && !this.state.loading && !this.state.item) && (<p>Не выбран элемент</p>);
 
         return (
             <div className="item-details card">
                 {itemView}
                 <div className="loader">
+                    {emptyView}
                     {loaderView}
                 </div>
             </div>

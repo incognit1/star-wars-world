@@ -43,7 +43,7 @@ export default class StarWarsService {
     getAllStarships = async () => {
         const res = await this.getResource('starships/');
 
-        return res.results;
+        return res.results.map(this._transformStarship);
     };
 
     getStarship = async (id) => {

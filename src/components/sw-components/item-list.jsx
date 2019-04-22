@@ -18,7 +18,7 @@ const mapPersonListDataToProps  = (starWarsService) => ({
 const mapPlanetListDataToProps  = (starWarsService) => ({
     getData: starWarsService.getAllPlanets
 });
-const mapStarsipListDataToProps = (starWarsService) => ({
+const mapStarshipListDataToProps = (starWarsService) => ({
     getData: starWarsService.getAllStarships
 });
 
@@ -35,7 +35,7 @@ const StarshipList =
               withData(
                   withChildFunction(ItemList, renderModelAndName),
               ),
-              mapStarsipListDataToProps,
+              mapStarshipListDataToProps,
           );
 
 const PlanetList =
