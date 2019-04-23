@@ -3,8 +3,16 @@ import './random-planet.css';
 import StarWarsService from "../../services/star-wars.service";
 import Spinner from "../spinner";
 import ErrorMessage from "../error-message";
+import PropTypes from 'prop-types';
 
 export default class RandomPlanet extends Component {
+    static defaultProps = {
+        updateInterval: 10000,
+    };
+
+    static propTypes = {
+        updateInterval: PropTypes.number,
+    };
 
     state = {
         planet : {},
@@ -15,11 +23,13 @@ export default class RandomPlanet extends Component {
     db = new StarWarsService();
 
     componentDidMount() {
+        const { updateInterval } = this.props;
+
         this.updatePlanet();
 
         setInterval(
             this.updatePlanet,
-            10000
+            updateInterval
         )
     }
 

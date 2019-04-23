@@ -1,6 +1,7 @@
 import React from 'react';
 import './item-list.css';
 import Spinner from "../spinner";
+import PropTypes from 'prop-types';
 
 const ItemList = (props) => {
     const {data} = props;
@@ -36,6 +37,12 @@ const ItemList = (props) => {
         </div>
     );
 
+};
+
+ItemList.propTypes = {
+    onItemSelected: PropTypes.func,
+    data: PropTypes.arrayOf(PropTypes.object),
+    children: PropTypes.func.isRequired,
 };
 
 export default ItemList;
