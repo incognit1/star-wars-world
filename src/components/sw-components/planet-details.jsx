@@ -20,4 +20,4 @@ const mapMethodsToProps = (starWarsService) => {
     }
 };
 
-export default withStarWarsService(PlanetDetails, mapMethodsToProps);
+export default withStarWarsService(mapMethodsToProps)(PlanetDetails);

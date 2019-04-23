@@ -1,7 +1,7 @@
 import React from 'react'
 import {StarWarsConsumer} from "../star-wars-context";
 
-const withStarWarsService = (View, mapMethodsToProps) => {
+const withStarWarsService = (mapMethodsToProps) => (View) => {
     return (props) => {
         return (
             <StarWarsConsumer>
