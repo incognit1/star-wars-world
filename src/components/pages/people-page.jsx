@@ -1,23 +1,18 @@
-import React, {Component} from 'react';
-
-import Row from "../row";
+import React from 'react';
 import {PersonList} from "../sw-components/item-list";
-import PersonDetails from "../sw-components/person-details";
 
-class PeoplePage extends Component {
-    state = {
-        selectedItem: null,
-    };
+const PeoplePage = (props) => {
 
-    onItemSelected = (selectedItem) => {
-        this.setState({selectedItem});
-    };
+    return (
+        <React.Fragment>
+            <h3>People</h3>
+            <PersonList onItemSelected={(id) => {
+                const newLocation=`${id}`;
 
-    render() {
-        return (
-            <Row left={<PersonList onItemSelected={this.onItemSelected}/>}
-                 right={<PersonDetails itemId={this.state.selectedItem}/>}/>
-        );
-    }}
+                props.history.push(newLocation)
+            }}/>
+        </React.Fragment>
+    );
+}
 
 export default PeoplePage;

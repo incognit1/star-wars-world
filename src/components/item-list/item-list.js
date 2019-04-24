@@ -2,6 +2,7 @@ import React from 'react';
 import './item-list.css';
 import Spinner from "../spinner";
 import PropTypes from 'prop-types';
+import {withRouter} from "react-router-dom";
 
 const ItemList = (props) => {
     const {data} = props;
@@ -45,4 +46,4 @@ ItemList.propTypes = {
     children: PropTypes.func.isRequired,
 };
 
-export default ItemList;
+export default withRouter(ItemList);

@@ -17,8 +17,11 @@ class PlanetsPage extends Component {
 
     render() {
         return (
-            <Row left={<PlanetList onItemSelected={this.onItemSelected}/>}
+            <React.Fragment>
+                <h3>Planets</h3>
+                <Row left={<PlanetList onItemSelected={this.onItemSelected}/>}
                  right={<PlanetDetails itemId={this.state.selectedItem}/>}/>
+            </React.Fragment>
         );
     }}
 

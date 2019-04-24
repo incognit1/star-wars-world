@@ -11,16 +11,6 @@
     align-items: center;
 }
 
-.nav li {
-    padding: 10px;
-    cursor: pointer;
-    transition: .4s;
-}
-
-
-.nav li:hover {
-    background: #333131;
-}
 
 .logo {
     margin-right: 30px;
@@ -35,4 +25,16 @@
     font-size: 48px;
     color: #f5cb00;
     line-height: 42px;
+}
+
+.nav a {
+    padding: 10px;
+    transition: .4s;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background: #333131;
 }

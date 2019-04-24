@@ -15,8 +15,11 @@ class StarshipsPage extends Component {
 
     render() {
         return (
+            <React.Fragment>
+                <h3>Planets</h3>
             <Row left={<StarshipList onItemSelected={this.onItemSelected}/>}
                  right={<StarshipDetails itemId={this.state.selectedItem}/>}/>
+            </React.Fragment>
         );
     }
 }
