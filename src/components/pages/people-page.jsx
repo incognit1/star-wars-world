@@ -2,10 +2,9 @@ import React from 'react';
 import {PersonList} from "../sw-components/item-list";
 
 const PeoplePage = (props) => {
-
     return (
         <React.Fragment>
-            <h3>People</h3>
+            <h3 className='color-white'>People</h3>
             <PersonList onItemSelected={(id) => {
                 const newLocation=`${id}`;
 

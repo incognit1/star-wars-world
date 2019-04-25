@@ -18,7 +18,7 @@ class PlanetsPage extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3>Planets</h3>
+                <h3 className='color-white'>Planets</h3>
                 <Row left={<PlanetList onItemSelected={this.onItemSelected}/>}
                  right={<PlanetDetails itemId={this.state.selectedItem}/>}/>
             </React.Fragment>
